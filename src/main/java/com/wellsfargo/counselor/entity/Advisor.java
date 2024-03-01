@@ -1,16 +1,16 @@
 package com.wellsfargo.counselor.entity;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Advisor {
 
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long advisorId;
 
     @Column(nullable = false)
@@ -27,6 +27,9 @@ public class Advisor {
 
     @Column(nullable = false)
     private String email;
+
+    protected Advisor() {
+    }
 
     public Advisor(String firstName, String lastName, String address, String phone, String email) {
         this.firstName = firstName;
@@ -54,6 +57,13 @@ public class Advisor {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Advisor %d: %s %s, address: %s phone: %s email: %s", advisorId, firstName, lastName, address, phone,
+                email);
     }
 
     public String getAddress() {
