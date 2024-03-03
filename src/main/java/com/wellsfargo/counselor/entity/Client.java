@@ -1,14 +1,15 @@
 package com.wellsfargo.counselor.entity;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+// ENTITY/OBJECT/CLASS
 @Entity
 public class Client {
 
+    // VARIABLES
     @Id
     @GeneratedValue()
     private long clientId;
@@ -28,6 +29,7 @@ public class Client {
     @Column(nullable = false)
     private String email;
 
+    // CONSTRUCTOR
     public Client(String firstName, String lastName, String address, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -36,6 +38,7 @@ public class Client {
         this.email = email;
     }
 
+    // METHODS
     public Long getClientId() {
         return clientId;
     }
